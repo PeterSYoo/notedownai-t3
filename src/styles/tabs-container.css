@@ -1,3 +1,4 @@
+/* Tabs ------------------------------ */
 .TabsTrigger {
   padding: 0 20px;
   height: 45px;
@@ -13,12 +14,12 @@
 
 .TabsTrigger:first-child {
   border-top-left-radius: 8px;
-  box-shadow: inset -1px -1px 0 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset -1px -1px 0 0 rgba(255, 255, 255, 0.03);
 }
 
 .TabsTrigger:last-child {
   border-top-right-radius: 8px;
-  box-shadow: inset 1px -1px 0px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 1px -1px 0px 0 rgba(255, 255, 255, 0.03);
 }
 
 .TabsTrigger:hover {
@@ -34,4 +35,41 @@
 .TabsTrigger:focus {
   position: relative;
   box-shadow: 0 0 0 0;
+}
+
+/* Popover ------------------------------ */
+.PopoverContent {
+  border-radius: 8px;
+  padding: 10px 15px;
+  width: 220px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.PopoverContent:focus {
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px,
+    0 0 0 2px var(--violet7);
+}
+
+.PopoverContent[data-state='open'][data-side='top'] {
+  animation-name: slideDownAndFade;
+}
+
+.PopoverContent[data-state='open'][data-side='right'] {
+  animation-name: slideLeftAndFade;
+}
+
+.PopoverContent[data-state='open'][data-side='bottom'] {
+  animation-name: slideUpAndFade;
+}
+
+.PopoverContent[data-state='open'][data-side='left'] {
+  animation-name: slideRightAndFade;
+}
+
+.PopoverArrow {
+  fill: rgba(255, 255, 255, 1);
 }
