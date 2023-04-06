@@ -8,10 +8,10 @@ import * as Popover from "@radix-ui/react-popover";
 import { AuthProviders } from "./AuthProviders.components";
 
 export const LoginTab = () => {
-  // States ------------------------------------------------------------------------ ***
+  // States -------------------------------------------------------------------------- ***
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  // JSX --------------------------------------------------------------------------- ***
+  // JSX ----------------------------------------------------------------------------- ***
   return (
     <>
       <section className="flex flex-col gap-2">
@@ -88,31 +88,31 @@ export const LoginTab = () => {
         </fieldset>
         {/* -------------------------------------------------------------------------- */}
         {/* Login Button ------------------------------------------------------------- */}
-        <button className="mt-2 rounded-lg bg-[#48484D] px-4 py-2 text-white/50 hover:text-white">
+        <button className="mt-3 rounded-lg bg-[#48484D] px-4 py-2 text-white/50 hover:text-white">
           Login
         </button>
         {/* -------------------------------------------------------------------------- */}
       </section>
-      {/* Divider ------------------------------------------------------------------ */}
+      {/* Divider -------------------------------------------------------------------- */}
       <div className="grid grid-cols-[100px_1fr_100px] items-center">
         <div className="border-b border-white/20"></div>
         <p className="flex justify-center text-sm text-white/50">or</p>
         <div className="border-b border-white/20"></div>
       </div>
-      {/* -------------------------------------------------------------------------- */}
+      {/* ---------------------------------------------------------------------------- */}
       <button className="rounded-lg bg-[#48484D] px-4 py-2 text-white/50 hover:text-white">
         Login as Guest
       </button>
-      {/* Divider ------------------------------------------------------------------ */}
+      {/* Divider -------------------------------------------------------------------- */}
       <div className="grid grid-cols-[100px_1fr_100px] items-center">
         <div className="border-b border-white/20"></div>
         <p className="flex justify-center text-sm text-white/50">or</p>
         <div className="border-b border-white/20"></div>
       </div>
-      {/* -------------------------------------------------------------------------- */}
-      {/* Auth Providers ----------------------------------------------------------- */}
+      {/* ---------------------------------------------------------------------------- */}
+      {/* Auth Providers ------------------------------------------------------------- */}
       <AuthProviders />
-      {/* -------------------------------------------------------------------------- */}
+      {/* ---------------------------------------------------------------------------- */}
     </>
   );
 };

@@ -3,6 +3,7 @@ import { LoginTab } from "./LoginTab.components";
 import { SignupTab } from "./SignupTab.components";
 
 export const TabsContainer = () => {
+  // JSX ----------------------------------------------------------------------------- ***
   return (
     <>
       <Tabs.Root
@@ -20,16 +21,16 @@ export const TabsContainer = () => {
             Sign Up
           </Tabs.Trigger>
         </Tabs.List>
-        {/* Login Tab ---------------------------------------------------- */}
+        {/* Login Tab ---------------------------------------------------------------- */}
         <Tabs.Content className="flex flex-col gap-5 px-14 pt-10" value="tab1">
           <LoginTab />
         </Tabs.Content>
-        {/* --------------------------------------------------------------- */}
-        {/* Sign Up Tab --------------------------------------------------- */}
+        {/* -------------------------------------------------------------------------- */}
+        {/* Sign Up Tab -------------------------------------------------------------- */}
         <Tabs.Content className="flex flex-col gap-2 px-14" value="tab2">
           <SignupTab />
         </Tabs.Content>
-        {/* --------------------------------------------------------------- */}
+        {/* -------------------------------------------------------------------------- */}
       </Tabs.Root>
     </>
   );
