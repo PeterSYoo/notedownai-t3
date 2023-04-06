@@ -1,7 +1,15 @@
-import { InfoCircledIcon } from "@radix-ui/react-icons";
+import {
+  EyeClosedIcon,
+  EyeOpenIcon,
+  InfoCircledIcon,
+} from "@radix-ui/react-icons";
 import * as Popover from "@radix-ui/react-popover";
+import { useState } from "react";
 
 export const SignupTab = () => {
+  // States ------------------------------------------------------------------------ ***
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
   // JSX --------------------------------------------------------------------------- ***
   return (
     <>
@@ -90,11 +98,22 @@ export const SignupTab = () => {
             </Popover.Portal>
           </Popover.Root>
         </label>
-        <input
-          className="h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none"
-          id="password"
-          type="password"
-        />
+        <div className="flex h-[35px] items-center justify-between rounded-lg border border-white/20 px-2">
+          <input
+            className="bg-transparent text-white/50 focus:outline-none"
+            id="confirmPassword"
+            type={showPassword ? "text" : "password"}
+          />
+          {showPassword ? (
+            <button onClick={() => setShowPassword(false)}>
+              <EyeOpenIcon className="h-[20px] w-[20px] text-white/60 hover:text-white" />
+            </button>
+          ) : (
+            <button onClick={() => setShowPassword(true)}>
+              <EyeClosedIcon className="h-[20px] w-[20px] text-white/60 hover:text-white" />
+            </button>
+          )}
+        </div>
       </fieldset>
       {/* -------------------------------------------------------------------------- */}
       {/* Confirm Password --------------------------------------------------------- */}
@@ -105,11 +124,22 @@ export const SignupTab = () => {
         >
           Confirm Password
         </label>
-        <input
-          className="h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none"
-          id="confirmPassword"
-          type="password"
-        />
+        <div className="flex h-[35px] items-center justify-between rounded-lg border border-white/20 px-2">
+          <input
+            className="bg-transparent text-white/50 focus:outline-none"
+            id="confirmPassword"
+            type={showPassword ? "text" : "password"}
+          />
+          {showPassword ? (
+            <button onClick={() => setShowPassword(false)}>
+              <EyeOpenIcon className="h-[20px] w-[20px] text-white/60 hover:text-white" />
+            </button>
+          ) : (
+            <button onClick={() => setShowPassword(true)}>
+              <EyeClosedIcon className="h-[20px] w-[20px] text-white/60 hover:text-white" />
+            </button>
+          )}
+        </div>
       </fieldset>
       {/* -------------------------------------------------------------------------- */}
       {/* Sign Up Button ----------------------------------------------------------- */}
