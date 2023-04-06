@@ -21,7 +21,7 @@ export const TabsContainer = () => {
           </Tabs.Trigger>
         </Tabs.List>
         {/* Login Tab ---------------------------------------------------- */}
-        <Tabs.Content className="flex flex-col gap-2 px-14 pt-14" value="tab1">
+        <Tabs.Content className="flex flex-col gap-5 px-14 pt-10" value="tab1">
           <LoginTab />
         </Tabs.Content>
         {/* --------------------------------------------------------------- */}
