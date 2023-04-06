@@ -1,4 +1,5 @@
 import { InfoCircledIcon } from "@radix-ui/react-icons";
+import * as Popover from "@radix-ui/react-popover";
 
 export const SignupTab = () => {
   // JSX --------------------------------------------------------------------------- ***
@@ -11,7 +12,22 @@ export const SignupTab = () => {
           htmlFor="email"
         >
           Email
-          <InfoCircledIcon />
+          <Popover.Root>
+            <Popover.Trigger asChild>
+              <button className="" aria-label="Email requirements">
+                <InfoCircledIcon className="h-[17px] w-[17px]" />
+              </button>
+            </Popover.Trigger>
+            <Popover.Portal>
+              <Popover.Content className="PopoverContent">
+                <p className="text-sm text-black/60">
+                  Must be in proper email format with no spaces and special
+                  characters other than @. Max 24 characters.
+                </p>
+                <Popover.Arrow className="PopoverArrow" />
+              </Popover.Content>
+            </Popover.Portal>
+          </Popover.Root>
         </label>
         <input
           className="h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none"
@@ -27,7 +43,22 @@ export const SignupTab = () => {
           htmlFor="username"
         >
           Username
-          <InfoCircledIcon />
+          <Popover.Root>
+            <Popover.Trigger asChild>
+              <button className="" aria-label="Username requirements">
+                <InfoCircledIcon className="h-[17px] w-[17px]" />
+              </button>
+            </Popover.Trigger>
+            <Popover.Portal>
+              <Popover.Content className="PopoverContent">
+                <p className="text-sm text-black/60">
+                  Only numbers and letters are allowed, no spaces, max 24
+                  characters.
+                </p>
+                <Popover.Arrow className="PopoverArrow" />
+              </Popover.Content>
+            </Popover.Portal>
+          </Popover.Root>
         </label>
         <input
           className="h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none"
@@ -42,7 +73,22 @@ export const SignupTab = () => {
           htmlFor="password"
         >
           Password
-          <InfoCircledIcon />
+          <Popover.Root>
+            <Popover.Trigger asChild>
+              <button className="" aria-label="Password requirements">
+                <InfoCircledIcon className="h-[17px] w-[17px]" />
+              </button>
+            </Popover.Trigger>
+            <Popover.Portal>
+              <Popover.Content className="PopoverContent">
+                <p className="text-sm text-black/60">
+                  Password must contain 1 uppercase, 1 lowercase, 1 special
+                  character, no spaces, and max 24 characters.
+                </p>
+                <Popover.Arrow className="PopoverArrow" />
+              </Popover.Content>
+            </Popover.Portal>
+          </Popover.Root>
         </label>
         <input
           className="h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none"
