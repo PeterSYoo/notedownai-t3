@@ -11,6 +11,9 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UsernameExistsModal } from "./UsernameExistsModal.components";
+import useHandleLogin from "~/hooks/useHandleLogin";
+import { useRouter } from "next/router";
+import { WrongPasswordModal } from "./WrongPasswordModal.components";
 
 // ---------------------------------- Form Schemas ----------------------------------- ***
 const validationSchema = z.object({
@@ -42,11 +45,22 @@ export const LoginTab = () => {
   const [popoverPassword, setPopoverPassword] = useState<boolean>(false);
   const [isUsernameExistsModal, setIsUsernameExistsModal] =
     useState<boolean>(false);
+  const [isWrongPasswordModal, setIsWrongPasswordModal] =
+    useState<boolean>(false);
+
+  const router = useRouter();
+
+  const { mutateAsync, isLoading } = useHandleLogin(
+    router,
+    setIsUsernameExistsModal,
+    setIsWrongPasswordModal
+  );
 
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<ValidationSchema>({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
@@ -54,7 +68,14 @@ export const LoginTab = () => {
   });
 
   // ------------------------------- Custom Functions -------------------------------- ***
-  const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
+    await mutateAsync({ username: data.username, password: data.password });
+    reset();
+  };
+
+  const handleGuestLogin = async () => {
+    await mutateAsync({ username: "guest", password: "Abcd1234!" });
+  };
 
   const handleHover = (popover: string) => {
     if (popover === "username") setPopoverUsername(true);
@@ -73,6 +94,9 @@ export const LoginTab = () => {
         <UsernameExistsModal
           setIsUsernameExistsModal={setIsUsernameExistsModal}
         />
+      )}
+      {isWrongPasswordModal && (
+        <WrongPasswordModal setIsWrongPasswordModal={setIsWrongPasswordModal} />
       )}
       {/* ---------------------------------------------------------------------------- */}
       <section className="flex flex-col gap-5 px-12 pt-10">
@@ -108,7 +132,7 @@ export const LoginTab = () => {
             </label>
             <input
               className={`h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none ${
-                (errors.username && "border-red-600/90 text-red-500") || ""
+                (errors.username && "border-red-600 text-red-500") || ""
               }`}
               {...register("username")}
             />
@@ -145,7 +169,7 @@ export const LoginTab = () => {
             </label>
             <div
               className={`flex h-[35px] items-center justify-between rounded-lg border border-white/20 pl-2 text-white/50 ${
-                (errors.password && "border-red-600/90 text-red-500") || ""
+                (errors.password && "border-red-600 text-red-500") || ""
               }`}
             >
               <input
@@ -166,8 +190,12 @@ export const LoginTab = () => {
           </fieldset>
           {/* ------------------------------------------------------------------------ */}
           {/* ---------------------------- Login Button ------------------------------ */}
-          <button className="mt-3 rounded-lg bg-[#48484D] px-4 py-2 text-white/50 hover:text-white">
-            Login
+          <button className="mt-3 flex h-[40px] items-center justify-center rounded-lg bg-[#48484D] px-4 text-white/50 hover:text-white">
+            {isLoading ? (
+              <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#cdcdcd] border-current border-r-transparent text-[#cdcdcd]"></div>
+            ) : (
+              "Login"
+            )}
           </button>
           {/* ------------------------------------------------------------------------ */}
         </form>
@@ -178,9 +206,18 @@ export const LoginTab = () => {
           <div className="border-b border-white/20"></div>
         </div>
         {/* -------------------------------------------------------------------------- */}
-        <button className="rounded-lg bg-[#48484D] px-4 py-2 text-white/50 hover:text-white">
-          Login as Guest
+        {/* ---------------------------- Guest Login Button -------------------------- */}
+        <button
+          onClick={() => handleGuestLogin()}
+          className="flex h-[40px] items-center justify-center rounded-lg bg-[#48484D] px-4 text-white/50 hover:text-white"
+        >
+          {isLoading ? (
+            <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#cdcdcd] border-current border-r-transparent text-[#cdcdcd]"></div>
+          ) : (
+            "Login as Guest"
+          )}
         </button>
+        {/* -------------------------------------------------------------------------- */}
         {/* --------------------------------- Divider -------------------------------- */}
         <div className="grid grid-cols-[100px_1fr_100px] items-center">
           <div className="border-b border-white/20"></div>
