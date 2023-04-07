@@ -8,10 +8,12 @@ import {
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
 import { type JWT } from "next-auth/jwt";
+import * as bcrypt from "bcrypt";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -77,6 +79,39 @@ export const authOptions: NextAuthOptions = {
     GitHubProvider({
       clientId: env.GITHUB_CLIENT_ID,
       clientSecret: env.GITHUB_CLIENT_SECRET,
+    }),
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        username: { label: "Username", required: true },
+        password: { label: "Password", type: "password", required: true },
+      },
+      async authorize(
+        credentials: { username: string; password: string } | undefined
+      ) {
+        if (!credentials) {
+          return null;
+        }
+
+        const user = await prisma.user.findUnique({
+          where: { username: credentials.username },
+        });
+
+        if (!user) {
+          throw new Error("No user found with that username!");
+        }
+
+        const passwordMatches: boolean = (await bcrypt.compare(
+          credentials?.password,
+          user.password as string
+        )) as unknown as boolean;
+
+        if (!passwordMatches) {
+          throw new Error("Wrong password!");
+        }
+
+        return user;
+      },
     }),
     /**
      * ...add more providers here.
