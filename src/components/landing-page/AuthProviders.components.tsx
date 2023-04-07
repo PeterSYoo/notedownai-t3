@@ -3,14 +3,14 @@ import { type FC } from "react";
 import { BsDiscord, BsGithub, BsGoogle } from "react-icons/bs";
 
 export const AuthProviders: FC = () => {
-  // States -------------------------------------------------------------------------- ***
+  // ------------------------------------- States ------------------------------------ ***
   const { data: sessionData } = useSession();
 
-  // JSX ----------------------------------------------------------------------------- ***
+  // -------------------------------------- JSX -------------------------------------- ***
   return (
     <>
       <div className="flex justify-center gap-10 text-3xl text-white/50">
-        {/* Google ------------------------------------------------------------------- */}
+        {/* ------------------------------ Google ------------------------------------ */}
         <button
           onClick={() => void signIn("google", { callbackUrl: "/dashboard" })}
           className="hover:text-white"
@@ -18,7 +18,7 @@ export const AuthProviders: FC = () => {
           <BsGoogle />
         </button>
         {/* -------------------------------------------------------------------------- */}
-        {/* Discord ------------------------------------------------------------------ */}
+        {/* ------------------------------ Discord ----------------------------------- */}
         <button
           onClick={() => void signIn("discord", { callbackUrl: "/dashboard" })}
           className="hover:text-white"
@@ -26,16 +26,13 @@ export const AuthProviders: FC = () => {
           <BsDiscord />
         </button>
         {/* -------------------------------------------------------------------------- */}
-        {/* GitHub ------------------------------------------------------------------- */}
-        <button
-          onClick={() => void signIn("github", { callbackUrl: "/dashboard" })}
-          className="hover:text-white"
-        >
+        {/* ------------------------------ GitHub ------------------------------------ */}
+        <button onClick={() => void signIn()} className="hover:text-white">
           <BsGithub />
         </button>
         {/* -------------------------------------------------------------------------- */}
       </div>
-      {/* Logout --------------------------------------------------------------------- */}
+      {/* -------------------------------- Logout ------------------------------------ */}
       {sessionData ? (
         <button
           onClick={() => void signOut()}
