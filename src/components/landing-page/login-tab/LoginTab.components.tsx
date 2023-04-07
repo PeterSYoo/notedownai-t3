@@ -1,3 +1,4 @@
+// -------------------------------------- Imports ------------------------------------ ***
 import {
   EyeClosedIcon,
   EyeOpenIcon,
@@ -9,6 +10,7 @@ import { AuthProviders } from "./AuthProviders.components";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { UsernameExistsModal } from "./UsernameExistsModal.components";
 
 // ---------------------------------- Form Schemas ----------------------------------- ***
 const validationSchema = z.object({
@@ -38,6 +40,8 @@ export const LoginTab = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [popoverUsername, setPopoverUsername] = useState<boolean>(false);
   const [popoverPassword, setPopoverPassword] = useState<boolean>(false);
+  const [isUsernameExistsModal, setIsUsernameExistsModal] =
+    useState<boolean>(false);
 
   const {
     register,
@@ -64,6 +68,13 @@ export const LoginTab = () => {
   // -------------------------------------- JSX -------------------------------------- ***
   return (
     <>
+      {/* -------------------------------- Modals ------------------------------------ */}
+      {isUsernameExistsModal && (
+        <UsernameExistsModal
+          setIsUsernameExistsModal={setIsUsernameExistsModal}
+        />
+      )}
+      {/* ---------------------------------------------------------------------------- */}
       <section className="flex flex-col gap-5 px-12 pt-10">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
           {/* --------------------------- Username ----------------------------------- */}
