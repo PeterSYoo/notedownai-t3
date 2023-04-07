@@ -66,7 +66,7 @@ export const EmailExistsModal = ({
               <Cross2Icon className="h-[17px] w-[17px] text-white/70 hover:text-white" />
             </button>
           </div>
-          <div className="flex flex-col items-center justify-center gap-2 pb-7 text-white/70">
+          <div className="flex flex-col items-center justify-center gap-2 pb-7 pt-1 text-white/70">
             <h1 className="font-bold">Email Already Exists!</h1>
             <p className="max-w-[300px] px-2 text-center text-sm">
               Someone already registered with that email.
