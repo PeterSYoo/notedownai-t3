@@ -8,6 +8,10 @@ import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "~/utils/api";
+import { SuccessModal } from "./SuccessModal.components";
+import { EmailExistsModal } from "./EmailExistsModal.components";
+import { UsernameExistsModal } from "./UsernameExistsModal.components";
 
 // ---------------------------------- Form Schemas ----------------------------------- ***
 const validationSchema = z
@@ -52,11 +56,18 @@ export const SignupTab = () => {
   const [popoverPassword, setPopoverPassword] = useState<boolean>(false);
   const [popoverConfirmPassword, setPopoverConfirmPassword] =
     useState<boolean>(false);
+  const [isSuccessModal, setIsSuccessModal] = useState<boolean>(false);
+  const [isEmailExistsModal, setIsEmailExistsModal] = useState<boolean>(false);
+  const [isUsernameExistsModal, setIsUsernameExistsModal] =
+    useState<boolean>(false);
+
+  const createUser = api.user.postUser.useMutation();
 
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<ValidationSchema>({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
@@ -64,7 +75,26 @@ export const SignupTab = () => {
   });
 
   // ------------------------------- Custom Functions -------------------------------- ***
-  const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
+    try {
+      const result = await createUser.mutateAsync({
+        email: data.email,
+        username: data.username,
+        password: data.password,
+      });
+      console.log({ result });
+      if (result.success) {
+        reset();
+        setIsSuccessModal(true);
+      } else if (result.message === "Email already exists.") {
+        setIsEmailExistsModal(true);
+      } else if (result.message === "Username already exists.") {
+        setIsUsernameExistsModal(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleHover = (popover: string) => {
     if (popover === "email") setPopoverEmail(true);
@@ -82,6 +112,15 @@ export const SignupTab = () => {
   // -------------------------------------- JSX -------------------------------------- ***
   return (
     <>
+      {isSuccessModal && <SuccessModal setIsSuccessModal={setIsSuccessModal} />}
+      {isEmailExistsModal && (
+        <EmailExistsModal setIsEmailExistsModal={setIsEmailExistsModal} />
+      )}
+      {isUsernameExistsModal && (
+        <UsernameExistsModal
+          setIsUsernameExistsModal={setIsUsernameExistsModal}
+        />
+      )}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-2 px-12"
@@ -106,9 +145,7 @@ export const SignupTab = () => {
               </Popover.Trigger>
               <Popover.Portal>
                 <Popover.Content className="PopoverContent">
-                  <p className="text-sm text-black/60">
-                    {errors.email?.message}
-                  </p>
+                  <p className="text-sm">{errors.email?.message}</p>
                   <Popover.Arrow className="PopoverArrow" />
                 </Popover.Content>
               </Popover.Portal>
@@ -146,9 +183,7 @@ export const SignupTab = () => {
               </Popover.Trigger>
               <Popover.Portal>
                 <Popover.Content className="PopoverContent">
-                  <p className="text-sm text-black/60">
-                    {errors.username?.message}
-                  </p>
+                  <p className="text-sm">{errors.username?.message}</p>
                   <Popover.Arrow className="PopoverArrow" />
                 </Popover.Content>
               </Popover.Portal>
@@ -185,9 +220,7 @@ export const SignupTab = () => {
               </Popover.Trigger>
               <Popover.Portal>
                 <Popover.Content className="PopoverContent">
-                  <p className="text-sm text-black/60">
-                    {errors.password?.message}
-                  </p>
+                  <p className="text-sm">{errors.password?.message}</p>
                   <Popover.Arrow className="PopoverArrow" />
                 </Popover.Content>
               </Popover.Portal>
@@ -238,9 +271,7 @@ export const SignupTab = () => {
               </Popover.Trigger>
               <Popover.Portal>
                 <Popover.Content className="PopoverContent">
-                  <p className="text-sm text-black/60">
-                    {errors.confirmPassword?.message}
-                  </p>
+                  <p className="text-sm">{errors.confirmPassword?.message}</p>
                   <Popover.Arrow className="PopoverArrow" />
                 </Popover.Content>
               </Popover.Portal>
@@ -269,8 +300,12 @@ export const SignupTab = () => {
         </fieldset>
         {/* -------------------------------------------------------------------------- */}
         {/* ---------------------------- Sign Up Button ------------------------------ */}
-        <button className="mt-6 rounded-lg bg-[#48484D] px-4 py-2 text-white/50 hover:text-white">
-          Sign Up
+        <button className="mt-6 flex items-center justify-center rounded-lg bg-[#48484D] px-4 py-2 text-white/50 hover:text-white">
+          {createUser.isLoading ? (
+            <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#cdcdcd] border-current border-r-transparent text-[#cdcdcd]"></div>
+          ) : (
+            "Sign Up"
+          )}
         </button>
         {/* -------------------------------------------------------------------------- */}
       </form>
