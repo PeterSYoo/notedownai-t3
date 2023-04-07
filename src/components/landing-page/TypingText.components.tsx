@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 export const TypingText = ({ texts }: { texts: string[] }) => {
-  // States -------------------------------------------------------------------------- ***
+  // ------------------------------------- States ------------------------------------ ***
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [displayText, setDisplayText] = useState<string | undefined>("");
   const [isTyping, setIsTyping] = useState<boolean>(false);
 
-  // Effects ------------------------------------------------------------------------- ***
+  // ------------------------------------ Effects ------------------------------------ ***
   useEffect(() => {
     let currentIndex = 0;
     const interval = setInterval(() => {
@@ -18,7 +18,7 @@ export const TypingText = ({ texts }: { texts: string[] }) => {
           setCurrentTextIndex((currentTextIndex + 1) % texts.length);
         }, 2500);
       }
-    }, 100);
+    }, 60);
     return () => clearInterval(interval);
   }, [texts, currentTextIndex]);
 
@@ -36,11 +36,11 @@ export const TypingText = ({ texts }: { texts: string[] }) => {
     return () => clearTimeout(timeout);
   }, [displayText]);
 
-  // JSX ----------------------------------------------------------------------------- ***
+  // -------------------------------------- JSX -------------------------------------- ***
   return (
     <>
       {displayText}
-      <span className={`cursor ${isTyping ? "typing" : ""} -ml-1`}>|</span>
+      <span className={`cursor ${isTyping ? "typing" : ""} -ml-0.5`}>|</span>
     </>
   );
 };
