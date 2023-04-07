@@ -1,7 +1,9 @@
+// -------------------------------------- Imports ------------------------------------ ***
 import { signIn, signOut, useSession } from "next-auth/react";
 import { type FC } from "react";
 import { BsDiscord, BsGithub, BsGoogle } from "react-icons/bs";
 
+// -------------------------------- Component Function ------------------------------- ***
 export const AuthProviders: FC = () => {
   // ------------------------------------- States ------------------------------------ ***
   const { data: sessionData } = useSession();

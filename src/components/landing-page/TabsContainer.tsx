@@ -1,7 +1,9 @@
+// -------------------------------------- Imports ------------------------------------ ***
 import * as Tabs from "@radix-ui/react-tabs";
 import { LoginTab } from "./login-tab/LoginTab.components";
 import { SignupTab } from "./signup-tab/SignupTab.components";
 
+// -------------------------------- Component Function ------------------------------- ***
 export const TabsContainer = () => {
   // -------------------------------------- JSX -------------------------------------- ***
   return (

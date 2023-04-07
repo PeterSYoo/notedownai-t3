@@ -1,3 +1,4 @@
+// -------------------------------------- Imports ------------------------------------ ***
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useEffect, useRef, useState } from "react";
 
@@ -18,7 +19,6 @@ export const UsernameExistsModal = ({
       setScale(0.9);
     }
   };
-
   // ------------------------------------ Effects ------------------------------------ ***
   useEffect(() => {
     document.addEventListener("click", handleClickOutsideModal);

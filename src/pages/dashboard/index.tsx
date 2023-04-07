@@ -1,5 +1,7 @@
+// -------------------------------------- Imports ------------------------------------ ***
 import { signOut, useSession } from "next-auth/react";
 
+// -------------------------------- Component Function ------------------------------- ***
 const DashboardPage = () => {
   // ------------------------------------- States ------------------------------------ ***
   const { data: sessionData } = useSession();

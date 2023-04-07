@@ -1,4 +1,5 @@
 import { type AppType } from "next/app";
+// -------------------------------------- Imports ------------------------------------ ***
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { api } from "~/utils/api";
@@ -11,6 +12,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+// -------------------------------- Component Function ------------------------------- ***
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },

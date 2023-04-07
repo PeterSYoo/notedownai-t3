@@ -1,3 +1,4 @@
+// -------------------------------------- Imports ------------------------------------ ***
 import {
   EyeClosedIcon,
   EyeOpenIcon,
@@ -112,6 +113,7 @@ export const SignupTab = () => {
   // -------------------------------------- JSX -------------------------------------- ***
   return (
     <>
+      {/* -------------------------------- Modals ------------------------------------ */}
       {isSuccessModal && <SuccessModal setIsSuccessModal={setIsSuccessModal} />}
       {isEmailExistsModal && (
         <EmailExistsModal setIsEmailExistsModal={setIsEmailExistsModal} />
@@ -121,6 +123,7 @@ export const SignupTab = () => {
           setIsUsernameExistsModal={setIsUsernameExistsModal}
         />
       )}
+      {/* ---------------------------------------------------------------------------- */}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-2 px-12"

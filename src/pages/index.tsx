@@ -1,7 +1,9 @@
+// -------------------------------------- Imports ------------------------------------ ***
 import { type NextPage } from "next";
 import { TabsContainer } from "~/components/landing-page/TabsContainer";
 import { TypingText } from "~/components/landing-page/TypingText.components";
 
+// -------------------------------- Component Function ------------------------------- ***
 const Home: NextPage = () => {
   // -------------------------------------- JSX -------------------------------------- ***
   return (
