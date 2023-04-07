@@ -89,10 +89,7 @@ export const LoginTab = () => {
                 </Popover.Trigger>
                 <Popover.Portal>
                   <Popover.Content className="PopoverContent">
-                    <p className="text-sm text-black/60">
-                      Only numbers and letters are allowed, no spaces, max 24
-                      characters.
-                    </p>
+                    <p className="text-sm">{errors.username?.message}</p>
                     <Popover.Arrow className="PopoverArrow" />
                   </Popover.Content>
                 </Popover.Portal>
@@ -129,10 +126,7 @@ export const LoginTab = () => {
                 </Popover.Trigger>
                 <Popover.Portal>
                   <Popover.Content className="PopoverContent">
-                    <p className="text-sm text-black/60">
-                      Password must contain 1 uppercase, 1 lowercase, 1 special
-                      character, no spaces, and max 24 characters.
-                    </p>
+                    <p className="text-sm">{errors.password?.message}</p>
                     <Popover.Arrow className="PopoverArrow" />
                   </Popover.Content>
                 </Popover.Portal>
