@@ -156,7 +156,7 @@ export const SignupTab = () => {
           </label>
           <input
             className={`h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none ${
-              (errors.email && "border-red-600/90 text-red-500") || ""
+              (errors.email && "border-red-600 text-red-500") || ""
             }`}
             type="email"
             {...register("email")}
@@ -194,7 +194,7 @@ export const SignupTab = () => {
           </label>
           <input
             className={`h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none ${
-              (errors.username && "border-red-600/90 text-red-500") || ""
+              (errors.username && "border-red-600 text-red-500") || ""
             }`}
             {...register("username")}
           />
@@ -231,7 +231,7 @@ export const SignupTab = () => {
           </label>
           <div
             className={`flex h-[35px] items-center justify-between rounded-lg border border-white/20 pl-2 text-white/50 ${
-              (errors.password && "border-red-600/90 text-red-500") || ""
+              (errors.password && "border-red-600 text-red-500") || ""
             }`}
           >
             <input
@@ -282,7 +282,7 @@ export const SignupTab = () => {
           </label>
           <div
             className={`flex h-[35px] items-center justify-between rounded-lg border border-white/20 pl-2 text-white/50 ${
-              (errors.confirmPassword && "border-red-600/90 text-red-500") || ""
+              (errors.confirmPassword && "border-red-600 text-red-500") || ""
             }`}
           >
             <input
@@ -303,7 +303,7 @@ export const SignupTab = () => {
         </fieldset>
         {/* -------------------------------------------------------------------------- */}
         {/* ---------------------------- Sign Up Button ------------------------------ */}
-        <button className="mt-6 flex items-center justify-center rounded-lg bg-[#48484D] px-4 py-2 text-white/50 hover:text-white">
+        <button className="mt-6 flex h-[40px] items-center justify-center rounded-lg bg-[#48484D] px-4 text-white/50 hover:text-white">
           {createUser.isLoading ? (
             <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#cdcdcd] border-current border-r-transparent text-[#cdcdcd]"></div>
           ) : (
