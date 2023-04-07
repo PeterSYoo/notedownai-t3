@@ -18,7 +18,7 @@ export const userRouter = createTRPCRouter({
         });
 
         if (emailExists) {
-          throw {
+          return {
             code: "CONFLICT",
             message: "Email already exists.",
           };
@@ -29,7 +29,7 @@ export const userRouter = createTRPCRouter({
         });
 
         if (usernameExists) {
-          throw {
+          return {
             code: "CONFLICT",
             message: "Username already exists.",
           };
