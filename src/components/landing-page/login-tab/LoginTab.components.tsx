@@ -104,7 +104,7 @@ export const LoginTab = () => {
           {/* --------------------------- Username ----------------------------------- */}
           <fieldset className="flex flex-col gap-1">
             <label
-              className="flex items-center gap-2 text-white/80"
+              className="flex items-center gap-2 text-[#565452]"
               htmlFor="username"
             >
               Username
@@ -131,8 +131,8 @@ export const LoginTab = () => {
               </Popover.Root>
             </label>
             <input
-              className={`h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none ${
-                (errors.username && "border-red-600 text-red-500") || ""
+              className={`h-[35px] rounded-lg border border-[#bcbab6] bg-transparent px-2 text-[#565452] focus:outline-none ${
+                (errors.username && "border-red-500 text-red-600") || ""
               }`}
               {...register("username")}
             />
@@ -141,7 +141,7 @@ export const LoginTab = () => {
           {/* ----------------------------- Password --------------------------------- */}
           <fieldset className="flex flex-col gap-1">
             <label
-              className="flex items-center gap-2 text-white/80"
+              className="flex items-center gap-2 text-[#565452]"
               htmlFor="username"
             >
               Password
@@ -168,8 +168,8 @@ export const LoginTab = () => {
               </Popover.Root>
             </label>
             <div
-              className={`flex h-[35px] items-center justify-between rounded-lg border border-white/20 pl-2 text-white/50 ${
-                (errors.password && "border-red-600 text-red-500") || ""
+              className={`flex h-[35px] items-center justify-between rounded-lg border border-[#bcbab6] pl-2 text-[#565452] ${
+                (errors.password && "border-red-500 text-red-600") || ""
               }`}
             >
               <input
@@ -179,20 +179,20 @@ export const LoginTab = () => {
               />
               {showPassword ? (
                 <button type="button" onClick={() => setShowPassword(false)}>
-                  <EyeOpenIcon className="mx-2 h-[20px] w-[20px] text-white/60 hover:text-white" />
+                  <EyeOpenIcon className="mx-2 h-[20px] w-[20px] text-[#565452] hover:text-[#353432]" />
                 </button>
               ) : (
                 <button type="button" onClick={() => setShowPassword(true)}>
-                  <EyeClosedIcon className="mx-2 h-[20px] w-[20px] text-white/60 hover:text-white" />
+                  <EyeClosedIcon className="mx-2 h-[20px] w-[20px] text-[#565452] hover:text-[#353432]" />
                 </button>
               )}
             </div>
           </fieldset>
           {/* ------------------------------------------------------------------------ */}
           {/* ---------------------------- Login Button ------------------------------ */}
-          <button className="mt-3 flex h-[40px] items-center justify-center rounded-lg bg-[#48484D] px-4 text-white/50 hover:text-white">
+          <button className="mt-3 flex h-[40px] items-center justify-center rounded-lg bg-[#565452] px-4 text-[#EEE6E1] hover:bg-[#353432]">
             {isLoading ? (
-              <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#cdcdcd] border-current border-r-transparent text-[#cdcdcd]"></div>
+              <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#565452] border-current border-r-transparent text-[#565452]"></div>
             ) : (
               "Login"
             )}
@@ -201,18 +201,18 @@ export const LoginTab = () => {
         </form>
         {/* --------------------------------- Divider -------------------------------- */}
         <div className="grid grid-cols-[100px_1fr_100px] items-center">
-          <div className="border-b border-white/20"></div>
-          <p className="flex justify-center text-sm text-white/50">or</p>
-          <div className="border-b border-white/20"></div>
+          <div className="border-b border-[#bcbab6]"></div>
+          <p className="flex justify-center text-sm text-[#565452]">or</p>
+          <div className="border-b border-[#bcbab6]"></div>
         </div>
         {/* -------------------------------------------------------------------------- */}
         {/* ---------------------------- Guest Login Button -------------------------- */}
         <button
           onClick={() => handleGuestLogin()}
-          className="flex h-[40px] items-center justify-center rounded-lg bg-[#48484D] px-4 text-white/50 hover:text-white"
+          className="flex h-[40px] items-center justify-center rounded-lg bg-[#565452] px-4 text-[#EEE6E1] hover:bg-[#353432]"
         >
           {isLoading ? (
-            <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#cdcdcd] border-current border-r-transparent text-[#cdcdcd]"></div>
+            <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#565452] border-current border-r-transparent text-[#565452]"></div>
           ) : (
             "Login as Guest"
           )}
@@ -220,9 +220,9 @@ export const LoginTab = () => {
         {/* -------------------------------------------------------------------------- */}
         {/* --------------------------------- Divider -------------------------------- */}
         <div className="grid grid-cols-[100px_1fr_100px] items-center">
-          <div className="border-b border-white/20"></div>
-          <p className="flex justify-center text-sm text-white/50">or</p>
-          <div className="border-b border-white/20"></div>
+          <div className="border-b border-[#bcbab6]"></div>
+          <p className="flex justify-center text-sm text-[#565452]">or</p>
+          <div className="border-b border-[#bcbab6]"></div>
         </div>
         {/* -------------------------------------------------------------------------- */}
         {/* ------------------------------ Auth Providers ---------------------------- */}
