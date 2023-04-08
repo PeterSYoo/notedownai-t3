@@ -131,7 +131,7 @@ export const SignupTab = () => {
         {/* ------------------------------- Email ------------------------------------ */}
         <fieldset className="flex flex-col gap-1 pt-10">
           <label
-            className="flex items-center gap-2 text-white/80"
+            className="flex items-center gap-2 text-[#565452]"
             htmlFor="email"
           >
             Email
@@ -155,8 +155,8 @@ export const SignupTab = () => {
             </Popover.Root>
           </label>
           <input
-            className={`h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none ${
-              (errors.email && "border-red-600 text-red-500") || ""
+            className={`h-[35px] rounded-lg border border-[#bcbab6] bg-transparent px-2 text-[#565452] focus:outline-none ${
+              (errors.email && "border-red-500 text-red-600") || ""
             }`}
             type="email"
             {...register("email")}
@@ -166,7 +166,7 @@ export const SignupTab = () => {
         {/* ------------------------------ Username ---------------------------------- */}
         <fieldset className="flex flex-col gap-1">
           <label
-            className="flex items-center gap-2 text-white/80"
+            className="flex items-center gap-2 text-[#565452]"
             htmlFor="username"
           >
             Username
@@ -193,8 +193,8 @@ export const SignupTab = () => {
             </Popover.Root>
           </label>
           <input
-            className={`h-[35px] rounded-lg border border-white/20 bg-transparent px-2 text-white/50 focus:outline-none ${
-              (errors.username && "border-red-600 text-red-500") || ""
+            className={`h-[35px] rounded-lg border border-[#bcbab6] bg-transparent px-2 text-[#565452] focus:outline-none ${
+              (errors.username && "border-red-500 text-red-600") || ""
             }`}
             {...register("username")}
           />
@@ -203,7 +203,7 @@ export const SignupTab = () => {
         {/* ------------------------------- Password --------------------------------- */}
         <fieldset className="flex flex-col gap-1">
           <label
-            className="flex items-center gap-2 text-white/80"
+            className="flex items-center gap-2 text-[#565452]"
             htmlFor="password"
           >
             Password
@@ -230,8 +230,8 @@ export const SignupTab = () => {
             </Popover.Root>
           </label>
           <div
-            className={`flex h-[35px] items-center justify-between rounded-lg border border-white/20 pl-2 text-white/50 ${
-              (errors.password && "border-red-600 text-red-500") || ""
+            className={`flex h-[35px] items-center justify-between rounded-lg border border-[#bcbab6] pl-2 text-[#565452] ${
+              (errors.password && "border-red-500 text-red-600") || ""
             }`}
           >
             <input
@@ -241,11 +241,11 @@ export const SignupTab = () => {
             />
             {showPassword ? (
               <button type="button" onClick={() => setShowPassword(false)}>
-                <EyeOpenIcon className="mx-2 h-[20px] w-[20px] text-white/60 hover:text-white" />
+                <EyeOpenIcon className="mx-2 h-[20px] w-[20px] text-[#48484D] hover:text-[#353432]" />
               </button>
             ) : (
               <button type="button" onClick={() => setShowPassword(true)}>
-                <EyeClosedIcon className="mx-2 h-[20px] w-[20px] text-white/60 hover:text-white" />
+                <EyeClosedIcon className="mx-2 h-[20px] w-[20px] text-[#48484D] hover:text-[#353432]" />
               </button>
             )}
           </div>
@@ -254,7 +254,7 @@ export const SignupTab = () => {
         {/* --------------------------- Confirm Password ----------------------------- */}
         <fieldset className="flex flex-col gap-1">
           <label
-            className="flex items-center gap-2 text-white/80"
+            className="flex items-center gap-2 text-[#565452]"
             htmlFor="confirmPassword"
           >
             Confirm Password
@@ -281,8 +281,8 @@ export const SignupTab = () => {
             </Popover.Root>
           </label>
           <div
-            className={`flex h-[35px] items-center justify-between rounded-lg border border-white/20 pl-2 text-white/50 ${
-              (errors.confirmPassword && "border-red-600 text-red-500") || ""
+            className={`flex h-[35px] items-center justify-between rounded-lg border border-[#bcbab6] pl-2 text-[#565452] ${
+              (errors.confirmPassword && "border-red-500 text-red-600") || ""
             }`}
           >
             <input
@@ -292,20 +292,20 @@ export const SignupTab = () => {
             />
             {showPassword ? (
               <button type="button" onClick={() => setShowPassword(false)}>
-                <EyeOpenIcon className="mx-2 h-[20px] w-[20px] text-white/60 hover:text-white" />
+                <EyeOpenIcon className="mx-2 h-[20px] w-[20px] text-[#48484D] hover:text-[#353432]" />
               </button>
             ) : (
               <button type="button" onClick={() => setShowPassword(true)}>
-                <EyeClosedIcon className="mx-2 h-[20px] w-[20px] text-white/60 hover:text-white" />
+                <EyeClosedIcon className="mx-2 h-[20px] w-[20px] text-[#48484D] hover:text-[#353432]" />
               </button>
             )}
           </div>
         </fieldset>
         {/* -------------------------------------------------------------------------- */}
         {/* ---------------------------- Sign Up Button ------------------------------ */}
-        <button className="mt-6 flex h-[40px] items-center justify-center rounded-lg bg-[#48484D] px-4 text-white/50 hover:text-white">
+        <button className="mt-6 flex h-[40px] items-center justify-center rounded-lg bg-[#48484D] px-4 text-[#EEE6E1] hover:bg-[#353432]">
           {createUser.isLoading ? (
-            <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#cdcdcd] border-current border-r-transparent text-[#cdcdcd]"></div>
+            <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#565452] border-current border-r-transparent text-[#565452]"></div>
           ) : (
             "Sign Up"
           )}
