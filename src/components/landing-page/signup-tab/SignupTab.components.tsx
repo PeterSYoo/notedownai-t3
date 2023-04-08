@@ -303,7 +303,7 @@ export const SignupTab = () => {
         </fieldset>
         {/* -------------------------------------------------------------------------- */}
         {/* ---------------------------- Sign Up Button ------------------------------ */}
-        <button className="mt-6 flex h-[40px] items-center justify-center rounded-lg bg-[#48484D] px-4 text-[#EEE6E1] hover:bg-[#353432]">
+        <button className="mt-6 flex h-[40px] items-center justify-center rounded-lg bg-[#565452] px-4 text-[#EEE6E1] hover:bg-[#353432]">
           {createUser.isLoading ? (
             <div className="spin-fast flex h-4 w-4 items-center justify-center rounded-full border-2 border-solid border-[#565452] border-current border-r-transparent text-[#565452]"></div>
           ) : (
