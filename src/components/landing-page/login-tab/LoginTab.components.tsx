@@ -50,12 +50,6 @@ export const LoginTab = () => {
 
   const router = useRouter();
 
-  const { mutateAsync, isLoading } = useHandleLogin(
-    router,
-    setIsUsernameExistsModal,
-    setIsWrongPasswordModal
-  );
-
   const {
     register,
     handleSubmit,
@@ -67,10 +61,16 @@ export const LoginTab = () => {
     resolver: zodResolver(validationSchema),
   });
 
+  const { mutateAsync, isLoading } = useHandleLogin(
+    router,
+    setIsUsernameExistsModal,
+    setIsWrongPasswordModal,
+    reset
+  );
+
   // ------------------------------- Custom Functions -------------------------------- ***
   const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
     await mutateAsync({ username: data.username, password: data.password });
-    reset();
   };
 
   const handleGuestLogin = async () => {
