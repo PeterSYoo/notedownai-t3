@@ -6,7 +6,8 @@ import type { NextRouter } from "next/router";
 const useHandleLogin = (
   router: NextRouter,
   setIsUsernameExistsModal?: (arg0: boolean) => void,
-  setIsPasswordWrongModal?: (arg0: boolean) => void
+  setIsPasswordWrongModal?: (arg0: boolean) => void,
+  reset?: () => void
 ) => {
   const { mutateAsync, isLoading } = useMutation(async (data: ILogin) => {
     try {
@@ -30,7 +31,8 @@ const useHandleLogin = (
         ) {
           setIsPasswordWrongModal(true);
         } else if (status.ok) {
-          if (status.ok && status.url) {
+          if (status.ok && status.url && reset) {
+            reset();
             await router.push(status.url);
           }
         }
