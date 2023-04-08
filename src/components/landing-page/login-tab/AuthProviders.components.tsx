@@ -11,11 +11,11 @@ export const AuthProviders: FC = () => {
   // -------------------------------------- JSX -------------------------------------- ***
   return (
     <>
-      <div className="flex justify-center gap-10 text-3xl text-white/50">
+      <div className="flex justify-center gap-10 text-3xl text-[#565452]">
         {/* ------------------------------ Google ------------------------------------ */}
         <button
           onClick={() => void signIn("google", { callbackUrl: "/dashboard" })}
-          className="hover:text-white"
+          className="hover:text-[#353432]"
         >
           <BsGoogle />
         </button>
@@ -23,13 +23,13 @@ export const AuthProviders: FC = () => {
         {/* ------------------------------ Discord ----------------------------------- */}
         <button
           onClick={() => void signIn("discord", { callbackUrl: "/dashboard" })}
-          className="hover:text-white"
+          className="hover:text-[#353432]"
         >
           <BsDiscord />
         </button>
         {/* -------------------------------------------------------------------------- */}
         {/* ------------------------------ GitHub ------------------------------------ */}
-        <button onClick={() => void signIn()} className="hover:text-white">
+        <button onClick={() => void signIn()} className="hover:text-[#353432]">
           <BsGithub />
         </button>
         {/* -------------------------------------------------------------------------- */}
