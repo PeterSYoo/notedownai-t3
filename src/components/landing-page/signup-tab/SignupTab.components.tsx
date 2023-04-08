@@ -156,7 +156,7 @@ export const SignupTab = () => {
           </label>
           <input
             className={`h-[35px] rounded-lg border border-[#bcbab6] bg-transparent px-2 text-[#565452] focus:outline-none ${
-              (errors.email && "border-red-500 text-red-600") || ""
+              (errors.email && "border-red-400 text-red-600") || ""
             }`}
             type="email"
             {...register("email")}
@@ -194,7 +194,7 @@ export const SignupTab = () => {
           </label>
           <input
             className={`h-[35px] rounded-lg border border-[#bcbab6] bg-transparent px-2 text-[#565452] focus:outline-none ${
-              (errors.username && "border-red-500 text-red-600") || ""
+              (errors.username && "border-red-400 text-red-600") || ""
             }`}
             {...register("username")}
           />
@@ -231,7 +231,7 @@ export const SignupTab = () => {
           </label>
           <div
             className={`flex h-[35px] items-center justify-between rounded-lg border border-[#bcbab6] pl-2 text-[#565452] ${
-              (errors.password && "border-red-500 text-red-600") || ""
+              (errors.password && "border-red-400 text-red-600") || ""
             }`}
           >
             <input
@@ -282,7 +282,7 @@ export const SignupTab = () => {
           </label>
           <div
             className={`flex h-[35px] items-center justify-between rounded-lg border border-[#bcbab6] pl-2 text-[#565452] ${
-              (errors.confirmPassword && "border-red-500 text-red-600") || ""
+              (errors.confirmPassword && "border-red-400 text-red-600") || ""
             }`}
           >
             <input
