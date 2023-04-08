@@ -9,11 +9,11 @@ export const TabsContainer = () => {
   return (
     <>
       <Tabs.Root
-        className="mt-12 flex h-[570px] w-[350px] flex-col rounded-lg bg-gradient-to-tr from-[#232325] via-[#313133] to-[#313133]"
+        className="mt-12 flex h-[570px] w-[350px] flex-col rounded-lg bg-[#EEE6E1] shadow shadow-[#565452]"
         defaultValue="tab1"
       >
         <Tabs.List
-          className="flex justify-between bg-white/10"
+          className="flex justify-between"
           aria-label="Manage your account"
         >
           <Tabs.Trigger className="TabsTrigger" value="tab1">
