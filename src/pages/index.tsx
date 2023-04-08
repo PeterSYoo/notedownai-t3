@@ -12,10 +12,10 @@ const Home: NextPage = () => {
         <div className="flex flex-grow bg-[url('https://res.cloudinary.com/dryh1nvhk/image/upload/v1680749458/NoteDown%20AI/landing-bg_n5bcpn.jpg')] bg-cover bg-center bg-no-repeat">
           <div className="flex h-full w-full items-center justify-center overflow-hidden">
             <div className="flex h-full w-full flex-col items-center gap-5 rounded-lg bg-[#EEE6E1] bg-opacity-30 backdrop-blur-sm">
-              <h1 className="flex justify-center pt-12 font-serif text-5xl font-bold italic text-[#353432]">
+              <h1 className="flex justify-center pt-12 font-serif text-5xl font-bold italic text-[#565452]">
                 NoteDown AI
               </h1>
-              <p className="h-[35px] max-w-[300px] text-center text-[#353432]">
+              <p className="h-[35px] max-w-[300px] text-center text-[#565452]">
                 <TypingText
                   texts={[
                     "Our app employs generative ai that automatically takes notes for you, saving you time and effort.",
