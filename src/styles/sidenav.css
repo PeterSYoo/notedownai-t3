@@ -1,28 +1,27 @@
 /* Theme Switcher -------------------------------- */
 .SwitchRoot {
-  width: 93px;
+  width: 73px;
   height: 34px;
-  background-color: white;
   border-radius: 9999px;
   position: relative;
 }
 
 .SwitchRoot[data-state='checked'] {
-  background-color: #BABBC1;
+  background-color: white;
 }
 
 .SwitchThumb {
   display: block;
   width: 30px;
   height: 30px;
-  background-color: black;
+  background-color: #101011;
   border-radius: 9999px;
-  transition: transform 100ms;
+  transition: transform 200ms ease-in-out;
   transform: translateX(2px);
   will-change: transform;
 }
 
 .SwitchThumb[data-state='checked'] {
-  transform: translateX(60px);
-  background-color: white;
+  transform: translateX(40px);
+  background-color: #565452;
 }
