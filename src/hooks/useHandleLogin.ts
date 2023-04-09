@@ -4,7 +4,6 @@ import { signIn } from "next-auth/react";
 import type { NextRouter } from "next/router";
 
 const useHandleLogin = (
-  router: NextRouter,
   setIsUsernameExistsModal?: (arg0: boolean) => void,
   setIsPasswordWrongModal?: (arg0: boolean) => void,
   reset?: () => void
@@ -12,10 +11,8 @@ const useHandleLogin = (
   const { mutateAsync, isLoading } = useMutation(async (data: ILogin) => {
     try {
       const status = await signIn("credentials", {
-        redirect: false,
         username: data.username,
         password: data.password,
-        callbackUrl: "/dashboard",
       });
 
       if (status) {
@@ -33,7 +30,6 @@ const useHandleLogin = (
         } else if (status.ok) {
           if (status.ok && status.url && reset) {
             reset();
-            await router.push(status.url);
           }
         }
       }
