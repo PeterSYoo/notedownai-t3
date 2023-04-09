@@ -7,17 +7,33 @@ import {
   MoonIcon,
   SunIcon,
 } from "@radix-ui/react-icons";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 // -------------------------------- Component Function ------------------------------- ***
 const NotesPage = () => {
   // ------------------------------------- States ------------------------------------ ***
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const { theme, setTheme } = useTheme();
+
+  // ------------------------------- Custom Functions -------------------------------- ***
+  const handleSwitchChange = (checked: boolean) => {
+    setIsDarkMode(checked);
+    console.log({ isDarkMode });
+  };
+
+  // ------------------------------------ Effects ------------------------------------ ***
+  useEffect(() => {
+    if (isDarkMode) setTheme("light");
+    else if (!isDarkMode) setTheme("dark");
+  }, [isDarkMode]);
 
   // -------------------------------------- JSX -------------------------------------- ***
   return (
     <>
       <main className="flex flex-grow">
         {/* ----------------------------- Side Nav ----------------------------------- */}
-        <section className="flex w-[204px] flex-col justify-between bg-[#EEE6E1] text-[#565452]">
+        <section className="flex w-[204px] flex-col justify-between bg-[#EEE6E1] text-[#565452] dark:bg-[#101011] dark:text-[#BABBC1]">
           <section className="mx-auto w-full max-w-[150px]">
             <div className="flex flex-col gap-[16px] pt-[28px]">
               <h1 className="flex justify-center font-serif text-[20px] font-bold italic">
@@ -25,16 +41,20 @@ const NotesPage = () => {
               </h1>
               {/* --------------------- Theme Switcher ------------------------------- */}
               <div className="flex justify-center">
-                <Switch.Root
-                  className="SwitchRoot bg-[#BABBC1]"
-                  id="airplane-mode"
-                >
-                  <div className="flex justify-between px-1.5 pt-1">
-                    <SunIcon className="h-[22px] w-[22px]" />
-                    <MoonIcon className="h-[22px] w-[22px]" />
-                  </div>
-                  <Switch.Thumb className="SwitchThumb relative -mt-[26px]" />
-                </Switch.Root>
+                <form>
+                  <Switch.Root
+                    className="SwitchRoot bg-[#BABBC1]"
+                    id="airplane-mode"
+                    onCheckedChange={handleSwitchChange}
+                    checked={isDarkMode}
+                  >
+                    <div className="flex justify-between px-1.5 pt-1">
+                      <SunIcon className="h-[22px] w-[22px]" />
+                      <MoonIcon className="h-[22px] w-[22px] text-white dark:text-[#101011]" />
+                    </div>
+                    <Switch.Thumb className="SwitchThumb relative -mt-[26px]" />
+                  </Switch.Root>
+                </form>
               </div>
               {/* -------------------------------------------------------------------- */}
             </div>
@@ -48,7 +68,7 @@ const NotesPage = () => {
               </div>
               {/* -------------------------------------------------------------------- */}
               {/* ------------------------ Divider ----------------------------------- */}
-              <div className="w-full border-b border-[#CFCCC8]"></div>
+              <div className="w-full border-b border-[#CFCCC8] dark:border-[#3B3B3E]"></div>
               {/* -------------------------------------------------------------------- */}
             </div>
             <div className="flex w-full flex-col items-center justify-center gap-[27px] px-2 pt-[47px]">
@@ -82,13 +102,13 @@ const NotesPage = () => {
           </section>
           <section className="mx-auto flex w-full max-w-[150px] flex-col gap-[45px] pb-[69px]">
             {/* ------------------------ Divider ----------------------------------- */}
-            <div className="w-full border-b border-[#CFCCC8]"></div>
+            <div className="w-full border-b border-[#CFCCC8] dark:border-[#3B3B3E]"></div>
             {/* -------------------------------------------------------------------- */}
             {/* ----------------------- Logout Button -------------------------------- */}
             <div className="flex flex-col items-center justify-center">
               <button
                 onClick={() => void signOut()}
-                className="w-full rounded-lg bg-[#565452] p-3 text-[14px] font-semibold text-[#EEE6E1] hover:bg-[#353432]"
+                className="w-full rounded-lg bg-[#565452] p-3 text-[14px] font-semibold text-[#EEE6E1] hover:bg-[#353432] dark:bg-[#BABBC1] dark:text-[#101011] dark:hover:bg-[#cccdd3]"
               >
                 Logout
               </button>
