@@ -6,6 +6,7 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Head from "next/head";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,14 +21,16 @@ const MyApp: AppType<{ session: Session | null }> = ({
   // -------------------------------------- JSX -------------------------------------- ***
   return (
     <SessionProvider session={session}>
-      <Head>
-        <title>NoteDown AI</title>
-      </Head>
-      <div
-        className={`${inter.variable} min-w-screen flex min-h-screen flex-col font-inter`}
-      >
-        <Component {...pageProps} />
-      </div>
+      <ThemeProvider attribute="class">
+        <Head>
+          <title>NoteDown AI</title>
+        </Head>
+        <div
+          className={`${inter.variable} min-w-screen flex min-h-screen flex-col bg-white font-inter dark:bg-[#3B3B3E]`}
+        >
+          <Component {...pageProps} />
+        </div>
+      </ThemeProvider>
     </SessionProvider>
   );
 };
