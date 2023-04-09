@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url("./tabs-container.css");
+@import url('./sidenav.css');
 
 /* Text Cursor ----------------------------------- */
 .cursor {
