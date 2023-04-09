@@ -1,7 +1,12 @@
 // -------------------------------------- Imports ------------------------------------ ***
 import { signOut, useSession } from "next-auth/react";
 import * as Switch from "@radix-ui/react-switch";
-import { FileIcon, FilePlusIcon } from "@radix-ui/react-icons";
+import {
+  FileIcon,
+  FilePlusIcon,
+  MoonIcon,
+  SunIcon,
+} from "@radix-ui/react-icons";
 
 // -------------------------------- Component Function ------------------------------- ***
 const NotesPage = () => {
@@ -20,8 +25,15 @@ const NotesPage = () => {
               </h1>
               {/* --------------------- Theme Switcher ------------------------------- */}
               <div className="flex justify-center">
-                <Switch.Root className="SwitchRoot bg-white" id="airplane-mode">
-                  <Switch.Thumb className="SwitchThumb" />
+                <Switch.Root
+                  className="SwitchRoot bg-[#BABBC1]"
+                  id="airplane-mode"
+                >
+                  <div className="flex justify-between px-1.5 pt-1">
+                    <SunIcon className="h-[22px] w-[22px]" />
+                    <MoonIcon className="h-[22px] w-[22px]" />
+                  </div>
+                  <Switch.Thumb className="SwitchThumb relative -mt-[26px]" />
                 </Switch.Root>
               </div>
               {/* -------------------------------------------------------------------- */}
