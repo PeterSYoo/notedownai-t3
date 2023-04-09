@@ -29,7 +29,10 @@ export const AuthProviders: FC = () => {
         </button>
         {/* -------------------------------------------------------------------------- */}
         {/* ------------------------------ GitHub ------------------------------------ */}
-        <button onClick={() => void signIn()} className="hover:text-[#353432]">
+        <button
+          onClick={() => void signIn("github")}
+          className="hover:text-[#353432]"
+        >
           <BsGithub />
         </button>
         {/* -------------------------------------------------------------------------- */}
