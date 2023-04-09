@@ -48,8 +48,6 @@ export const LoginTab = () => {
   const [isWrongPasswordModal, setIsWrongPasswordModal] =
     useState<boolean>(false);
 
-  const router = useRouter();
-
   const {
     register,
     handleSubmit,
@@ -62,7 +60,6 @@ export const LoginTab = () => {
   });
 
   const { mutateAsync, isLoading } = useHandleLogin(
-    router,
     setIsUsernameExistsModal,
     setIsWrongPasswordModal,
     reset
