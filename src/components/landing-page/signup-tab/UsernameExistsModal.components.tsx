@@ -8,20 +8,20 @@ export const UsernameExistsModal = ({
   setIsUsernameExistsModal: (arg0: boolean) => void;
 }) => {
   // ------------------------------------- States ------------------------------------ ***
-  const [scale, setScale] = useState<number>(0.9);
+  const [scale, setScale] = useState<number>(0.1);
 
   const modalRef = useRef<HTMLDivElement>(null);
 
   // ------------------------------- Custom Functions -------------------------------- ***
   const handleClickOutsideModal = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      setScale(0.9);
+      setScale(0.1);
       setIsUsernameExistsModal(false);
     }
   };
 
   const handleCloseModal = () => {
-    setScale(0.9);
+    setScale(0.1);
     setIsUsernameExistsModal(false);
   };
 
@@ -36,7 +36,7 @@ export const UsernameExistsModal = ({
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setScale(0.9);
+        setScale(0.1);
         setIsUsernameExistsModal(false);
       }
     };
