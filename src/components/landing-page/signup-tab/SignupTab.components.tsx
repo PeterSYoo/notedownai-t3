@@ -75,6 +75,11 @@ export const SignupTab = () => {
     resolver: zodResolver(validationSchema),
   });
 
+  // ----------------------------------- Constants ----------------------------------- ***
+  const popoverContent =
+    "rounded-lg px-[15px] py-[10px] w-fit max-w-[220px] bg-[#565452] text-[#EEE6E1] shadow-md shadow-black/70 transition-all duration-400 ease-in-out PopoverContent";
+  const popoverArrow = "fill-[#565452] mb-[15px]";
+
   // ------------------------------- Custom Functions -------------------------------- ***
   const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
     try {
@@ -147,9 +152,9 @@ export const SignupTab = () => {
                 )}
               </Popover.Trigger>
               <Popover.Portal>
-                <Popover.Content className="PopoverContent">
+                <Popover.Content className={`${popoverContent}`}>
                   <p className="text-sm">{errors.email?.message}</p>
-                  <Popover.Arrow className="PopoverArrow" />
+                  <Popover.Arrow className={`${popoverArrow}`} />
                 </Popover.Content>
               </Popover.Portal>
             </Popover.Root>
@@ -185,9 +190,9 @@ export const SignupTab = () => {
                 )}
               </Popover.Trigger>
               <Popover.Portal>
-                <Popover.Content className="PopoverContent">
+                <Popover.Content className={`${popoverContent}`}>
                   <p className="text-sm">{errors.username?.message}</p>
-                  <Popover.Arrow className="PopoverArrow" />
+                  <Popover.Arrow className={`${popoverArrow}`} />
                 </Popover.Content>
               </Popover.Portal>
             </Popover.Root>
@@ -222,9 +227,9 @@ export const SignupTab = () => {
                 )}
               </Popover.Trigger>
               <Popover.Portal>
-                <Popover.Content className="PopoverContent">
+                <Popover.Content className={`${popoverContent}`}>
                   <p className="text-sm">{errors.password?.message}</p>
-                  <Popover.Arrow className="PopoverArrow" />
+                  <Popover.Arrow className={`${popoverArrow}`} />
                 </Popover.Content>
               </Popover.Portal>
             </Popover.Root>
@@ -273,9 +278,9 @@ export const SignupTab = () => {
                 )}
               </Popover.Trigger>
               <Popover.Portal>
-                <Popover.Content className="PopoverContent">
+                <Popover.Content className={`${popoverContent}`}>
                   <p className="text-sm">{errors.confirmPassword?.message}</p>
-                  <Popover.Arrow className="PopoverArrow" />
+                  <Popover.Arrow className={`${popoverArrow}`} />
                 </Popover.Content>
               </Popover.Portal>
             </Popover.Root>
