@@ -1,5 +1,5 @@
-import { type AppType } from "next/app";
 // -------------------------------------- Imports ------------------------------------ ***
+import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { api } from "~/utils/api";
@@ -7,7 +7,10 @@ import "~/styles/globals.css";
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { useRouter } from "next/router";
+import { SideNav } from "~/components/SideNav.components";
 
+// ------------------------------ Constants Module Scope ----------------------------- ***
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -18,6 +21,12 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  // ------------------------------------- States ------------------------------------ ***
+  const router = useRouter();
+
+  // ----------------------------------- Constants ----------------------------------- ***
+  const isLandingPage = router.asPath === "/";
+
   // -------------------------------------- JSX -------------------------------------- ***
   return (
     <SessionProvider session={session}>
@@ -26,8 +35,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
           <title>NoteDown AI</title>
         </Head>
         <div
-          className={`${inter.variable} min-w-screen flex min-h-screen flex-col bg-white font-inter dark:bg-[#3B3B3E]`}
+          className={`${inter.variable} flex h-screen w-screen bg-white font-inter dark:bg-[#3B3B3E]`}
         >
+          {!isLandingPage && <SideNav />}
           <Component {...pageProps} />
         </div>
       </ThemeProvider>
