@@ -33,7 +33,7 @@ export const TypingText = ({ texts }: { texts: string[] }) => {
     setIsTyping(true);
     const timeout = setTimeout(() => {
       setIsTyping(false);
-    }, 10); // set delay to 1 second
+    }, 10);
     return () => clearTimeout(timeout);
   }, [displayText]);
 
