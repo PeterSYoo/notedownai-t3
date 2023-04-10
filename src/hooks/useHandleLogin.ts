@@ -1,18 +1,22 @@
 import { useMutation } from "@tanstack/react-query";
-import { ILogin } from "additional";
+import { type ILogin } from "additional";
 import { signIn } from "next-auth/react";
-import type { NextRouter } from "next/router";
+import { useRouter } from "next/router";
 
 const useHandleLogin = (
   setIsUsernameExistsModal?: (arg0: boolean) => void,
   setIsPasswordWrongModal?: (arg0: boolean) => void,
   reset?: () => void
 ) => {
+  const router = useRouter();
+
   const { mutateAsync, isLoading } = useMutation(async (data: ILogin) => {
     try {
       const status = await signIn("credentials", {
+        redirect: false,
         username: data.username,
         password: data.password,
+        callbackUrl: "/",
       });
 
       if (status) {
@@ -30,6 +34,7 @@ const useHandleLogin = (
         } else if (status.ok) {
           if (status.ok && status.url && reset) {
             reset();
+            await router.push("/notes");
           }
         }
       }
