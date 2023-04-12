@@ -7,7 +7,7 @@ import { SignupTab } from "./signup-tab/SignupTab.components";
 export const TabsContainer = () => {
   // ----------------------------------- Constants ----------------------------------- ***
   const tabsTrigger =
-    "px-[20px] h-[45px] flex-grow flex items-center justify-center text-[15px] leading-4 text-[#565452] select-none transition-shadow duration-500 ease-in-out data-[state=active]:text-[#565452] data-[state=active]:bg-[#EEE6E1] data-[state=active]:shadow-[#565452] data-[state=active]:shadow-[0_2px_0px_0px] data-[state=active]:-mb-1 data-[state=active]:shadow-md first:rounded-tl-lg last:rounded-tr-lg focus:relative";
+    "px-[20px] h-[45px] flex-grow flex items-center justify-center text-[15px] leading-4 text-[#565452] select-none transition-all duration-400 ease-in-out data-[state=active]:text-[#565452] data-[state=active]:mt-1 data-[state=active]:border-b-2 data-[state=active]:border-[#565452] first:rounded-tl-lg last:rounded-tr-lg focus:relative";
 
   // -------------------------------------- JSX -------------------------------------- ***
   return (
