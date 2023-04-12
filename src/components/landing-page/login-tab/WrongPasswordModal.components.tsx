@@ -62,7 +62,7 @@ export const WrongPasswordModal = ({
         {/* -------------------------- Modal Container ------------------------------- */}
         <div
           ref={modalRef}
-          className="h-fit w-fit rounded-xl bg-[#565452] px-5 pt-3 transition-all duration-300"
+          className="h-fit w-fit rounded-xl bg-[#565452] px-5 pt-3 shadow-md shadow-black/70 transition-all duration-300"
           style={{
             transform: `translate(0%, 0%) scale(${scale})`,
           }}
