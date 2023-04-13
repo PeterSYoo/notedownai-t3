@@ -32,7 +32,7 @@ export const SideNav = () => {
   return (
     <>
       {/* ------------------------------- Side Nav ----------------------------------- */}
-      <section className="flex h-screen w-[204px] flex-col justify-between bg-[#EEE6E1] text-[#565452] dark:bg-[#101011] dark:text-[#BABBC1]">
+      <section className="flex h-screen flex-col justify-between bg-[#EEE6E1] text-[#565452] dark:bg-[#101011] dark:text-[#BABBC1]">
         <section className="mx-auto w-full max-w-[150px]">
           <div className="flex flex-col gap-[16px] pt-[28px]">
             <h1 className="flex justify-center font-serif text-[20px] font-bold italic">
