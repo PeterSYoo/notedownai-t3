@@ -37,8 +37,14 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <div
           className={`${inter.variable} flex h-screen w-screen bg-white font-inter dark:bg-[#3B3B3E]`}
         >
-          {!isLandingPage && <SideNav />}
-          <Component {...pageProps} />
+          <div
+            className={`${
+              (!isLandingPage && "grid grid-cols-[250px_1fr]") || "w-full"
+            }`}
+          >
+            {!isLandingPage && <SideNav />}
+            <Component {...pageProps} />
+          </div>
         </div>
       </ThemeProvider>
     </SessionProvider>
