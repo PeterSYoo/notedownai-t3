@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { EditableDraft } from "~/components/notes/EditableDraft.components";
 import { InstructionsModal } from "~/components/notes/InstructionsModal.components";
+import TiptapDraftComponents from "~/components/notes/TiptapDraft.components";
 
 // -------------------------------- Component Function ------------------------------- ***
 const NotesPage = () => {
@@ -16,8 +17,9 @@ const NotesPage = () => {
       {isInstrucitonsModal && (
         <InstructionsModal setIsInstructionsModal={setIsInstructionsModal} />
       )}
-      <main className="flex flex-grow p-10">
-        <EditableDraft />
+      <main className="flex flex-grow p-16">
+        {/* <EditableDraft /> */}
+        <TiptapDraftComponents />
       </main>
     </>
   );
